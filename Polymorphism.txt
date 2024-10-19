@@ -1,0 +1,62 @@
+Polymorphism in Java is a fundamental idea in object-oriented programming. It allows methods to perform different actions based on the type of object they are working with. In simpler terms, it means that one function can behave differently depending on the object it’s called on.
+
+### Types of Polymorphism
+
+1. Compile-time Polymorphism (Static Polymorphism)
+   - This happens when the method to be called is determined at compile time. 
+   - It’s mainly achieved through method overloading- having multiple methods with the same name but different parameters.
+
+   Example:
+ 
+   class Math {
+       int add(int a, int b) { return a + b; }
+       int add(int a, int b, int c) { return a + b + c; }
+   }
+ 
+
+2. Runtime Polymorphism (Dynamic Polymorphism)
+   - This occurs when the method to be executed is determined at runtime. 
+   - It’s achieved through method overriding—when a subclass provides a specific implementation of a method that already exists in its parent class.
+
+   Example:
+ 
+   class Animal {
+       void sound() { System.out.println("Animal makes a sound"); }
+   }
+
+   class Dog extends Animal {
+       void sound() { System.out.println("Dog barks"); }
+   }
+
+   class Cat extends Animal {
+       void sound() { System.out.println("Cat meows"); }
+   }
+   
+   
+   Java Code:
+   
+   public class Main {
+    public static void main(String[] args) {
+        Animal myAnimal; // Declare an Animal reference
+
+        myAnimal = new Dog(); // Point to Dog object
+        myAnimal.sound(); // Outputs: Dog barks
+
+        myAnimal = new Cat(); // Now point to Cat object
+        myAnimal.sound(); // Outputs: Cat meows
+    }
+}
+
+Explanation of Output
+When myAnimal = new Dog(); is executed, myAnimal refers to a Dog object. When myAnimal.sound(); is called, it prints "Dog barks" because the sound() method in the Dog class overrides the method in the Animal class.
+
+Similarly, when myAnimal is reassigned to a Cat object, calling myAnimal.sound(); now prints "Cat meows".
+
+This behavior is an example of runtime polymorphism, where the method that gets executed is determined at runtime based on the actual object type.
+  
+
+
+- Compile-time: Same method name, different parameters (overloading).
+- Runtime: Same method name, but behavior changes in subclasses (overriding).
+
+In short, polymorphism allows for flexible and reusable code by letting the same method name work in different ways for different objects.
